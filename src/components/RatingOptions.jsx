@@ -20,14 +20,21 @@ function RatingOptions({ ratings, setRatings }) {
       return;
     }
 
-    // ✅ Add valid rating as normalized string
-    setRatings([...ratings, num.toString()]);
+    // ✅ Add valid rating and sort
+    const updated = [...ratings, num.toString()].sort(
+      (a, b) => parseInt(a, 10) - parseInt(b, 10)
+    );
+    setRatings(updated);
     setNewOption("");
   };
 
   const removeOption = (index) => {
     const updated = ratings.filter((_, i) => i !== index);
-    setRatings(updated);
+    // ✅ Keep sorted after removal (not strictly necessary, but safe)
+    const sorted = [...updated].sort(
+      (a, b) => parseInt(a, 10) - parseInt(b, 10)
+    );
+    setRatings(sorted);
   };
 
   return (
@@ -42,7 +49,7 @@ function RatingOptions({ ratings, setRatings }) {
         ))}
       </ul>
       <input
-        type="number"   // ✅ restricts input to numbers
+        type="number"
         min="1"
         max="10"
         value={newOption}
