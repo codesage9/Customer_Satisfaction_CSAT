@@ -39,7 +39,6 @@ function RatingOptions({ ratings, setRatings }) {
 
   return (
     <div>
-      <h4>Rating Options</h4>
       <ul>
         {ratings.map((option, index) => (
           <li key={index}>

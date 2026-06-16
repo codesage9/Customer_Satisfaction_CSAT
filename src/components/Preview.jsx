@@ -53,7 +53,14 @@ function Preview({ content, style, ratings, showComment, comment, thankYou }) {
     {content.subtitle}
   </p>
 
-  <div style={{ marginBottom: "10px" }}>
+  <div
+  style={{
+    display: "flex",          // put children in a row
+    justifyContent: "center", // center them horizontally
+    gap: "10px",              // spacing between buttons
+    marginBottom: "10px",
+  }}
+>
     {ratings.map((r, i) => (
       <button
         key={i}
