@@ -4,10 +4,25 @@ function RatingOptions({ ratings, setRatings }) {
   const [newOption, setNewOption] = useState("");
 
   const addOption = () => {
-    if (newOption.trim() !== "") {
-      setRatings([...ratings, newOption]);
-      setNewOption("");
+    const num = parseInt(newOption, 10);
+
+    // ✅ Validation rules
+    if (isNaN(num)) {
+      alert("Please enter a number.");
+      return;
     }
+    if (num < 1 || num > 10) {
+      alert("Rating must be between 1 and 10.");
+      return;
+    }
+    if (ratings.includes(num.toString())) {
+      alert("This rating already exists.");
+      return;
+    }
+
+    // ✅ Add valid rating as normalized string
+    setRatings([...ratings, num.toString()]);
+    setNewOption("");
   };
 
   const removeOption = (index) => {
@@ -27,10 +42,12 @@ function RatingOptions({ ratings, setRatings }) {
         ))}
       </ul>
       <input
-        type="text"
+        type="number"   // ✅ restricts input to numbers
+        min="1"
+        max="10"
         value={newOption}
         onChange={(e) => setNewOption(e.target.value)}
-        placeholder="Add rating option"
+        placeholder="Add rating option (1-10)"
       />
       <button onClick={addOption}>Add</button>
     </div>
