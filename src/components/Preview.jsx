@@ -1,4 +1,37 @@
-function Preview({ content, style, ratings }) {
+import { useState } from "react";
+
+function Preview({ content, style, ratings, showComment, comment, thankYou }) {
+  const [submitted, setSubmitted] = useState(false);
+
+  if (submitted) {
+    return (
+      <div
+        style={{
+          backgroundColor: style.bgColor,
+          color: style.textColor,
+          padding: "20px",
+          borderRadius: "10px",
+          width: "250px",
+        }}
+      >
+        <h3>{thankYou.title}</h3>
+        <p>{thankYou.subtitle}</p>
+        <button
+          style={{
+            backgroundColor: style.buttonColor,
+            color: "#fff",
+            padding: "10px",
+            border: "none",
+            borderRadius: "5px",
+          }}
+          onClick={() => setSubmitted(false)}
+        >
+          {thankYou.buttonText}
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
@@ -12,7 +45,6 @@ function Preview({ content, style, ratings }) {
       <h3>{content.title}</h3>
       <p>{content.subtitle}</p>
 
-      {/* NEW: Ratings section */}
       <div style={{ marginBottom: "10px" }}>
         {ratings.map((r, i) => (
           <button
@@ -31,6 +63,15 @@ function Preview({ content, style, ratings }) {
         ))}
       </div>
 
+      {showComment && (
+        <textarea
+          value={comment}
+          readOnly
+          placeholder="Your feedback..."
+          style={{ width: "100%", height: "60px", marginBottom: "10px" }}
+        />
+      )}
+
       <button
         style={{
           backgroundColor: style.buttonColor,
@@ -39,6 +80,7 @@ function Preview({ content, style, ratings }) {
           border: "none",
           borderRadius: "5px",
         }}
+        onClick={() => setSubmitted(true)}
       >
         Submit
       </button>
