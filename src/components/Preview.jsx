@@ -3,6 +3,7 @@ import { useState } from "react";
 function Preview({ content, style, ratings, showComment, comment, thankYou }) {
   const [submitted, setSubmitted] = useState(false);
   const [selectedRating, setSelectedRating] = useState(null);
+  const [error, setError] = useState("");   // NEW: error message state
 
   if (submitted) {
     return (
@@ -50,25 +51,28 @@ function Preview({ content, style, ratings, showComment, comment, thankYou }) {
         {ratings.map((r, i) => (
           <button
             key={i}
-            onClick={() => setSelectedRating(r)} // ✅ set selected rating
+            onClick={() => {
+              setSelectedRating(r);
+              setError(""); // clear error once a rating is chosen
+            }}
             style={{
               margin: "5px",
               padding: "5px",
               border: "1px solid #ccc",
               borderRadius: "5px",
               backgroundColor:
-                selectedRating === r ? "#007bff" : "#f9f9f9", // ✅ highlight selected
-              color: selectedRating === r ? "#fff" : "#000", // ✅ white text if selected
+                selectedRating === r ? "#007bff" : "#f9f9f9",
+              color: selectedRating === r ? "#fff" : "#000",
               cursor: "pointer",
             }}
             onMouseEnter={(e) =>
               (e.target.style.backgroundColor =
                 selectedRating === r ? "#0056b3" : "#e0e0e0")
-            } // ✅ hover effect
+            }
             onMouseLeave={(e) =>
               (e.target.style.backgroundColor =
                 selectedRating === r ? "#007bff" : "#f9f9f9")
-            } // ✅ reset after hover
+            }
           >
             {r}
           </button>
@@ -84,6 +88,11 @@ function Preview({ content, style, ratings, showComment, comment, thankYou }) {
         />
       )}
 
+      {/* NEW: Error message */}
+      {error && (
+        <p style={{ color: "red", marginBottom: "10px" }}>{error}</p>
+      )}
+
       <button
         style={{
           backgroundColor: style.buttonColor,
@@ -92,7 +101,13 @@ function Preview({ content, style, ratings, showComment, comment, thankYou }) {
           border: "none",
           borderRadius: "5px",
         }}
-        onClick={() => setSubmitted(true)}
+        onClick={() => {
+          if (!selectedRating) {
+            setError("Please select a rating to proceed"); // block submission
+            return;
+          }
+          setSubmitted(true);
+        }}
       >
         Submit
       </button>
