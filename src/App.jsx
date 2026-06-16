@@ -18,8 +18,8 @@ function App() {
     buttonColor: "#007bff",
   });
 
-  // NEW: ratings state
-  const [ratings, setRatings] = useState(["⭐", "⭐⭐", "⭐⭐⭐"]);
+  const [ratings, setRatings] = useState(["1", "2", "3", "4", "5"]);
+
 
   const [showComment, setShowComment] = useState(false);
   const [comment, setComment] = useState("");

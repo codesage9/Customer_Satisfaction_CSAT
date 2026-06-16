@@ -45,23 +45,25 @@ function Preview({ content, style, ratings, showComment, comment, thankYou }) {
       <h3>{content.title}</h3>
       <p>{content.subtitle}</p>
 
-      <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: "10px" }}>
         {ratings.map((r, i) => (
-          <button
+            <button
             key={i}
             style={{
-              margin: "5px",
-              padding: "5px",
-              border: "1px solid #ccc",
-              borderRadius: "5px",
-              backgroundColor: "#f9f9f9",
-              cursor: "pointer",
+                margin: "5px",
+                padding: "5px",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                backgroundColor: "#ffffff",
+                color: "#000000",
+                cursor: "pointer",
             }}
-          >
+            >
             {r}
-          </button>
+            </button>
         ))}
-      </div>
+        </div>
+
 
       {showComment && (
         <textarea
