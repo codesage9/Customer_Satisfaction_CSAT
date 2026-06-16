@@ -64,11 +64,16 @@ Customer_Satisfaction_CSAT/
 ```
 ## 🌐 Deployment Link
 The app is deployed on Vercel:
-👉 [Live Demo](https://customer-satisfaction-csat.vercel.app/)
+👉 [Vercel Hosting](https://customer-satisfaction-csat.vercel.app/)
+
 For project details:  
 👉 [Vercel Project Overview](https://vercel.com/durgeshsinghmainacc-6257s-projects/customer-satisfaction-csat)
+
+#### Video Demo and Testing
+👉 [Live Demo URL](https://drive.google.com/file/d/1QZiejjNUZ5VPgIV2rkSfYIx4nOiSrR9b/view?usp=sharing)
+
+
 ```bash
 https://customer-satisfaction-csat.vercel.app/
 https://vercel.com/durgeshsinghmainacc-6257s-projects/customer-satisfaction-csat
-
 ```
