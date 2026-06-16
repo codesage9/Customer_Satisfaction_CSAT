@@ -6,13 +6,13 @@ function RatingOptions({ ratings, setRatings }) {
   const addOption = () => {
     const num = parseInt(newOption, 10);
 
-    // ✅ Validation rules
+    // Validation rules
     if (isNaN(num)) {
       alert("Please enter a number.");
       return;
     }
     if (num < 1 || num > 10) {
-      alert("Rating must be between 1 and 10.");
+      alert("Rating must be from 1 to 10.");
       return;
     }
     if (ratings.includes(num.toString())) {
@@ -20,7 +20,7 @@ function RatingOptions({ ratings, setRatings }) {
       return;
     }
 
-    // ✅ Add valid rating and sort
+    // Add valid rating and sort
     const updated = [...ratings, num.toString()].sort(
       (a, b) => parseInt(a, 10) - parseInt(b, 10)
     );
@@ -30,7 +30,7 @@ function RatingOptions({ ratings, setRatings }) {
 
   const removeOption = (index) => {
     const updated = ratings.filter((_, i) => i !== index);
-    // ✅ Keep sorted after removal (not strictly necessary, but safe)
+    // Keep sorted after removal (not strictly necessary, but safe)
     const sorted = [...updated].sort(
       (a, b) => parseInt(a, 10) - parseInt(b, 10)
     );

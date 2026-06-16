@@ -36,10 +36,8 @@ function App() {
         <h2>Content Tab</h2>
         <ContentTab content={content} setContent={setContent} />
 
-        {/* NEW: Rating Options */}
         <RatingOptions ratings={ratings} setRatings={setRatings} />
 
-        {/* NEW: Comment Box */}
         <CommentBox
           showComment={showComment}
           setShowComment={setShowComment}
@@ -47,7 +45,6 @@ function App() {
           setComment={setComment}
         />
 
-        {/* NEW: Thank You Page Setup */}
         <ThankYouPage thankYou={thankYou} setThankYou={setThankYou} />
         
         <h2>Styling Tab</h2>
@@ -56,7 +53,6 @@ function App() {
 
       <div>
         <h2>Live Preview</h2>
-        {/* Pass ratings + comment into Preview */}
         <Preview
           content={content}
           style={style}
