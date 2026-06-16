@@ -52,9 +52,14 @@ function Preview({ content, style, ratings, showComment, comment, thankYou }) {
           <button
             key={i}
             onClick={() => {
-              setSelectedRating(r);
-              setError(""); // clear error once a rating is chosen
-            }}
+                if (selectedRating === r) {
+                    setSelectedRating(null);   // ✅ unselect if clicked again
+                } else {
+                    setSelectedRating(r);      // ✅ select new rating
+                }
+                setError("");                // clear error when any rating is clicked
+                }}
+
             style={{
               margin: "5px",
               padding: "5px",
